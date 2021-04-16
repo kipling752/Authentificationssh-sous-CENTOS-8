@@ -1,0 +1,19 @@
+Installez le paquet serveur SSH en utilisant la commande : 
+
+dnf install openssh-server
+
+Démarrez le démon et définissez pour commencer après le redémarrage:
+
+systemctl start sshd
+systemctl enable sshd
+
+Confirmez que le démon est opérationnel :
+
+systemctl status sshd
+
+Ouvrez le port SSH 22 pour permettre le trafic entrant :
+
+firewall-cmd --zone=public --permanent --add-service=ssh
+firewall-cmd --reload
+
+systemctl reload sshd
